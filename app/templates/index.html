@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>API Jadwal Sholat Indonesia Sederhana</title>
+  <style>
+      pre {
+          max-height: 400px;
+          overflow: scroll;
+      }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="container">
+      <h2>Sekilas</h2>
+      <p>Selamat datang di SHOLAT-API !</p>
+      <p>API sederhana untuk mendapat jadwal sholat untuk kota-kota di Indonesia.
+      Waktu yang tertera merupakan Waktu Indonesia Barat (WIB) atau GMT+7</p>
+      
+  		<i class="mb-0">Ini hanyalah API hasil scraping web https://www.jadwalsholat.org</i>
+	
+    </div>
+    <div class="container">
+      <h2>Endpoint</h2>
+      <ol>
+      <li><h4>/jadwal</h4></li>
+      <p>Endpoint untuk mengambil jadwal sholat</p>
+      <p><b>Metode:</b> <code>GET</code></p>
+      <p><b>Paramenter:</b>
+      <ul>
+        <li><b>id_kota</b></li>
+        <p>id kota, bisa dilihat menggunakan endpoint <code>/kota</code>.</p>
+        <li><b>mode</b></li>
+        <p>terdiri dari 2 mode, <code>'daily'</code> & <code>'monthly</code>.
+      </ul>
+      <p><b>Contoh:</b></p>
+      <pre>/jadwal?id_kota=30&mode=daily</pre>
+      <p>Akan mengambil jadwal sholat hari ini untuk kota Batam</p>
+      <p><b>Respon Hasil:</b></p>
+      <pre>
+{
+"success": true,
+"debug_message": "ok",
+"result": {
+    "kota": "Batam",
+    "data": {
+        "tanggal": "07",
+        "imsyak": "04:37",
+        "shubuh": "04:47",
+        "terbit": "06:01",
+        "dhuha": "06:25",
+        "dzuhur": "12:08",
+        "ashr": "15:18",
+        "maghrib": "18:12",
+        "isya": "19:21"
+        }
+    }
+}
+      </pre>
+      <li><h4>/kota</h4></li>
+      <p>Endpoint untuk mengambil daftar id_kota.</p>
+      <p><b>Metode:</b> <code>GET</code></p>
+      <p><b>Paramenter:</b> <code>Tidak Ada</code></p>
+      <p><b>Respon Hasil:</b></p>
+      <pre>
+{
+  "debug_message": "ok", 
+  "result": [
+    {
+      "id": "1", 
+      "kota": "ambarawa"
+    }, 
+    {
+      "id": "2", 
+      "kota": "ambon"
+    }, 
+    {
+      "id": "3", 
+      "kota": "amlapura"
+    }, 
+    {
+      "id": "4", 
+      "kota": "amuntai"
+    }, 
+    {
+      "id": "5", 
+      "kota": "argamakmur"
+    }, 
+    {
+      "id": "6", 
+      "kota": "atambua"
+    }, 
+    {
+      "id": "7", 
+      "kota": "babo"
+    }, 
+    {
+      "id": "8", 
+      "kota": "bagan siapiapi"
+    }, 
+    {
+      "id": "316", 
+      "kota": "bahaur, kalteng"
+    }, 
+    {
+      "id": "9", 
+      "kota": "bajawa"
+    }, 
+    {
+      "id": "10", 
+      "kota": "balige"
+    }, 
+    {
+      "id": "11", 
+      "kota": "balikpapan"
+    }, 
+    {
+      "id": "12", 
+      "kota": "banda aceh"
+    }, 
+    {
+      "id": "13", 
+      "kota": "bandarlampung"
+    }, 
+    {
+      "id": "14", 
+      "kota": "bandung"
+    }, 
+    {
+      "id": "15", 
+      "kota": "bangkalan"
+    }, 
+    {
+      "id": "16", 
+      "kota": "bangkinang"
+    }, 
+    {
+      "id": "17", 
+      "kota": "bangko"
+    }, 
+    {
+      "id": "18", 
+      "kota": "bangli"
+    }, 
+    {
+      "id": "19", 
+      "kota": "banjar"
+    }, 
+    {
+      "id": "20", 
+      "kota": "banjar baru"
+    }, 
+    {
+      "id": "21", 
+      "kota": "banjarmasin"
+    }, 
+    {
+      "id": "22", 
+      "kota": "banjarnegara"
+    }, 
+    {
+      "id": "23", 
+      "kota": "bantaeng"
+    }, 
+    {
+      "id": "24", 
+      "kota": "banten"
+    }, 
+    {
+      "id": "25", 
+      "kota": "bantul"
+    }, 
+    {
+      "id": "26", 
+      "kota": "banyuwangi"
+    }, 
+    {
+      "id": "27", 
+      "kota": "barabai"
+    }, 
+    {
+      "id": "28", 
+      "kota": "barito"
+    }, 
+    {
+      "id": "29", 
+      "kota": "barru"
+    }, 
+    {
+      "id": "30", 
+      "kota": "batam"
+    }, 
+    {
+      "id": "31", 
+      "kota": "batang"
+    }, 
+    {
+      "id": "32", 
+      "kota": "batu"
+    }, 
+    {
+      "id": "33", 
+      "kota": "baturaja"
+    }, 
+    {
+      "id": "34", 
+      "kota": "batusangkar"
+    }, 
+    {
+      "id": "35", 
+      "kota": "baubau"
+    }, 
+    {
+      "id": "36", 
+      "kota": "bekasi"
+    }, 
+    {
+      "id": "37", 
+      "kota": "bengkalis"
+    }, 
+    {
+      "id": "38", 
+      "kota": "bengkulu"
+    }, 
+    {
+      "id": "39", 
+      "kota": "benteng"
+    }, 
+    {
+      "id": "40", 
+      "kota": "biak"
+    }, 
+    {
+      "id": "41", 
+      "kota": "bima"
+    }, 
+    {
+      "id": "42", 
+      "kota": "binjai"
+    }, 
+    {
+      "id": "43", 
+      "kota": "bireuen"
+    }, 
+    {
+      "id": "44", 
+      "kota": "bitung"
+    }, 
+    {
+      "id": "45", 
+      "kota": "blitar"
+    }, 
+    {
+      "id": "46", 
+      "kota": "blora"
+    }, 
+    {
+      "id": "47", 
+      "kota": "bogor"
+    }, 
+    {
+      "id": "48", 
+      "kota": "bojonegoro"
+    }, 
+    {
+      "id": "49", 
+      "kota": "bondowoso"
+    }, 
+    {
+      "id": "50", 
+      "kota": "bontang"
+    }, 
+    {
+      "id": "51", 
+      "kota": "boyolali"
+    }, 
+    {
+      "id": "52", 
+      "kota": "brebes"
+    }, 
+    {
+      "id": "53", 
+      "kota": "bukit tinggi"
+    }, 
+    {
+      "id": "315", 
+      "kota": "bula sbt, maluku"
+    }, 
+    {
+      "id": "54", 
+      "kota": "bulukumba"
+    }, 
+    {
+      "id": "55", 
+      "kota": "buntok"
+    }, 
+    {
+      "id": "56", 
+      "kota": "cepu"
+    }, 
+    {
+      "id": "57", 
+      "kota": "ciamis"
+    }, 
+    {
+      "id": "58", 
+      "kota": "cianjur"
+    }, 
+    {
+      "id": "59", 
+      "kota": "cibinong"
+    }, 
+    {
+      "id": "60", 
+      "kota": "cilacap"
+    }, 
+    {
+      "id": "61", 
+      "kota": "cilegon"
+    }, 
+    {
+      "id": "62", 
+      "kota": "cimahi"
+    }, 
+    {
+      "id": "63", 
+      "kota": "cirebon"
+    }, 
+    {
+      "id": "64", 
+      "kota": "curup"
+    }, 
+    {
+      "id": "65", 
+      "kota": "demak"
+    }, 
+    {
+      "id": "66", 
+      "kota": "denpasar"
+    }, 
+    {
+      "id": "67", 
+      "kota": "depok"
+    }, 
+    {
+      "id": "68", 
+      "kota": "dili"
+    }, 
+    {
+      "id": "69", 
+      "kota": "dompu"
+    }, 
+    {
+      "id": "70", 
+      "kota": "donggala"
+    }, 
+    {
+      "id": "71", 
+      "kota": "dumai"
+    }, 
+    {
+      "id": "72", 
+      "kota": "ende"
+    }, 
+    {
+      "id": "73", 
+      "kota": "enggano"
+    }, 
+    {
+      "id": "74", 
+      "kota": "enrekang"
+    }, 
+    {
+      "id": "75", 
+      "kota": "fakfak"
+    }, 
+    {
+      "id": "76", 
+      "kota": "garut"
+    }, 
+    {
+      "id": "77", 
+      "kota": "gianyar"
+    }, 
+    {
+      "id": "78", 
+      "kota": "gombong"
+    }, 
+    {
+      "id": "79", 
+      "kota": "gorontalo"
+    }, 
+    {
+      "id": "80", 
+      "kota": "gresik"
+    }, 
+    {
+      "id": "81", 
+      "kota": "gunung sitoli"
+    }, 
+    {
+      "id": "82", 
+      "kota": "indramayu"
+    }, 
+    {
+      "id": "309", 
+      "kota": "jakarta barat"
+    }, 
+    {
+      "id": "308", 
+      "kota": "jakarta pusat"
+    }, 
+    {
+      "id": "310", 
+      "kota": "jakarta selatan"
+    }, 
+    {
+      "id": "311", 
+      "kota": "jakarta timur"
+    }, 
+    {
+      "id": "312", 
+      "kota": "jakarta utara"
+    }, 
+    {
+      "id": "83", 
+      "kota": "jambi"
+    }, 
+    {
+      "id": "84", 
+      "kota": "jayapura"
+    }, 
+    {
+      "id": "85", 
+      "kota": "jember"
+    }, 
+    {
+      "id": "86", 
+      "kota": "jeneponto"
+    }, 
+    {
+      "id": "87", 
+      "kota": "jepara"
+    }, 
+    {
+      "id": "88", 
+      "kota": "jombang"
+    }, 
+    {
+      "id": "89", 
+      "kota": "kabanjahe"
+    }, 
+    {
+      "id": "90", 
+      "kota": "kalabahi"
+    }, 
+    {
+      "id": "91", 
+      "kota": "kalianda"
+    }, 
+    {
+      "id": "92", 
+      "kota": "kandangan"
+    }, 
+    {
+      "id": "93", 
+      "kota": "karanganyar"
+    }, 
+    {
+      "id": "94", 
+      "kota": "karawang"
+    }, 
+    {
+      "id": "95", 
+      "kota": "kasungan"
+    }, 
+    {
+      "id": "96", 
+      "kota": "kayuagung"
+    }, 
+    {
+      "id": "97", 
+      "kota": "kebumen"
+    }, 
+    {
+      "id": "98", 
+      "kota": "kediri"
+    }, 
+    {
+      "id": "99", 
+      "kota": "kefamenanu"
+    }, 
+    {
+      "id": "100", 
+      "kota": "kendal"
+    }, 
+    {
+      "id": "101", 
+      "kota": "kendari"
+    }, 
+    {
+      "id": "102", 
+      "kota": "kertosono"
+    }, 
+    {
+      "id": "103", 
+      "kota": "ketapang"
+    }, 
+    {
+      "id": "104", 
+      "kota": "kisaran"
+    }, 
+    {
+      "id": "105", 
+      "kota": "klaten"
+    }, 
+    {
+      "id": "106", 
+      "kota": "kolaka"
+    }, 
+    {
+      "id": "107", 
+      "kota": "kota baru pulau laut"
+    }, 
+    {
+      "id": "108", 
+      "kota": "kota bumi"
+    }, 
+    {
+      "id": "109", 
+      "kota": "kota jantho"
+    }, 
+    {
+      "id": "110", 
+      "kota": "kotamobagu"
+    }, 
+    {
+      "id": "111", 
+      "kota": "kuala kapuas"
+    }, 
+    {
+      "id": "112", 
+      "kota": "kuala kurun"
+    }, 
+    {
+      "id": "113", 
+      "kota": "kuala pembuang"
+    }, 
+    {
+      "id": "114", 
+      "kota": "kuala tungkal"
+    }, 
+    {
+      "id": "115", 
+      "kota": "kudus"
+    }, 
+    {
+      "id": "116", 
+      "kota": "kuningan"
+    }, 
+    {
+      "id": "117", 
+      "kota": "kupang"
+    }, 
+    {
+      "id": "118", 
+      "kota": "kutacane"
+    }, 
+    {
+      "id": "119", 
+      "kota": "kutoarjo"
+    }, 
+    {
+      "id": "120", 
+      "kota": "labuhan"
+    }, 
+    {
+      "id": "121", 
+      "kota": "lahat"
+    }, 
+    {
+      "id": "122", 
+      "kota": "lamongan"
+    }, 
+    {
+      "id": "123", 
+      "kota": "langsa"
+    }, 
+    {
+      "id": "124", 
+      "kota": "larantuka"
+    }, 
+    {
+      "id": "125", 
+      "kota": "lawang"
+    }, 
+    {
+      "id": "126", 
+      "kota": "lhoseumawe"
+    }, 
+    {
+      "id": "127", 
+      "kota": "limboto"
+    }, 
+    {
+      "id": "128", 
+      "kota": "lubuk basung"
+    }, 
+    {
+      "id": "129", 
+      "kota": "lubuk linggau"
+    }, 
+    {
+      "id": "130", 
+      "kota": "lubuk pakam"
+    }, 
+    {
+      "id": "131", 
+      "kota": "lubuk sikaping"
+    }, 
+    {
+      "id": "132", 
+      "kota": "lumajang"
+    }, 
+    {
+      "id": "133", 
+      "kota": "luwuk"
+    }, 
+    {
+      "id": "134", 
+      "kota": "madiun"
+    }, 
+    {
+      "id": "135", 
+      "kota": "magelang"
+    }, 
+    {
+      "id": "136", 
+      "kota": "magetan"
+    }, 
+    {
+      "id": "137", 
+      "kota": "majalengka"
+    }, 
+    {
+      "id": "138", 
+      "kota": "majene"
+    }, 
+    {
+      "id": "139", 
+      "kota": "makale"
+    }, 
+    {
+      "id": "140", 
+      "kota": "makassar"
+    }, 
+    {
+      "id": "141", 
+      "kota": "malang"
+    }, 
+    {
+      "id": "142", 
+      "kota": "mamuju"
+    }, 
+    {
+      "id": "143", 
+      "kota": "manna"
+    }, 
+    {
+      "id": "144", 
+      "kota": "manokwari"
+    }, 
+    {
+      "id": "145", 
+      "kota": "marabahan"
+    }, 
+    {
+      "id": "146", 
+      "kota": "maros"
+    }, 
+    {
+      "id": "147", 
+      "kota": "martapura kalsel"
+    }, 
+    {
+      "id": "314", 
+      "kota": "masamba, sulsel"
+    }, 
+    {
+      "id": "148", 
+      "kota": "masohi"
+    }, 
+    {
+      "id": "149", 
+      "kota": "mataram"
+    }, 
+    {
+      "id": "150", 
+      "kota": "maumere"
+    }, 
+    {
+      "id": "151", 
+      "kota": "medan"
+    }, 
+    {
+      "id": "152", 
+      "kota": "mempawah"
+    }, 
+    {
+      "id": "153", 
+      "kota": "menado"
+    }, 
+    {
+      "id": "154", 
+      "kota": "mentok"
+    }, 
+    {
+      "id": "155", 
+      "kota": "merauke"
+    }, 
+    {
+      "id": "156", 
+      "kota": "metro"
+    }, 
+    {
+      "id": "157", 
+      "kota": "meulaboh"
+    }, 
+    {
+      "id": "158", 
+      "kota": "mojokerto"
+    }, 
+    {
+      "id": "159", 
+      "kota": "muara bulian"
+    }, 
+    {
+      "id": "160", 
+      "kota": "muara bungo"
+    }, 
+    {
+      "id": "161", 
+      "kota": "muara enim"
+    }, 
+    {
+      "id": "162", 
+      "kota": "muara teweh"
+    }, 
+    {
+      "id": "163", 
+      "kota": "muaro sijunjung"
+    }, 
+    {
+      "id": "164", 
+      "kota": "muntilan"
+    }, 
+    {
+      "id": "165", 
+      "kota": "nabire"
+    }, 
+    {
+      "id": "166", 
+      "kota": "negara"
+    }, 
+    {
+      "id": "167", 
+      "kota": "nganjuk"
+    }, 
+    {
+      "id": "168", 
+      "kota": "ngawi"
+    }, 
+    {
+      "id": "169", 
+      "kota": "nunukan"
+    }, 
+    {
+      "id": "170", 
+      "kota": "pacitan"
+    }, 
+    {
+      "id": "171", 
+      "kota": "padang"
+    }, 
+    {
+      "id": "172", 
+      "kota": "padang panjang"
+    }, 
+    {
+      "id": "173", 
+      "kota": "padang sidempuan"
+    }, 
+    {
+      "id": "174", 
+      "kota": "pagaralam"
+    }, 
+    {
+      "id": "175", 
+      "kota": "painan"
+    }, 
+    {
+      "id": "176", 
+      "kota": "palangkaraya"
+    }, 
+    {
+      "id": "177", 
+      "kota": "palembang"
+    }, 
+    {
+      "id": "178", 
+      "kota": "palopo"
+    }, 
+    {
+      "id": "179", 
+      "kota": "palu"
+    }, 
+    {
+      "id": "180", 
+      "kota": "pamekasan"
+    }, 
+    {
+      "id": "181", 
+      "kota": "pandeglang"
+    }, 
+    {
+      "id": "182", 
+      "kota": "pangka_"
+    }, 
+    {
+      "id": "183", 
+      "kota": "pangkajene sidenreng"
+    }, 
+    {
+      "id": "184", 
+      "kota": "pangkalan bun"
+    }, 
+    {
+      "id": "185", 
+      "kota": "pangkalpinang"
+    }, 
+    {
+      "id": "186", 
+      "kota": "panyabungan"
+    }, 
+    {
+      "id": "187", 
+      "kota": "par_"
+    }, 
+    {
+      "id": "188", 
+      "kota": "parepare"
+    }, 
+    {
+      "id": "189", 
+      "kota": "pariaman"
+    }, 
+    {
+      "id": "190", 
+      "kota": "pasuruan"
+    }, 
+    {
+      "id": "191", 
+      "kota": "pati"
+    }, 
+    {
+      "id": "192", 
+      "kota": "payakumbuh"
+    }, 
+    {
+      "id": "193", 
+      "kota": "pekalongan"
+    }, 
+    {
+      "id": "194", 
+      "kota": "pekan baru"
+    }, 
+    {
+      "id": "195", 
+      "kota": "pemalang"
+    }, 
+    {
+      "id": "196", 
+      "kota": "pematangsiantar"
+    }, 
+    {
+      "id": "197", 
+      "kota": "pendopo"
+    }, 
+    {
+      "id": "198", 
+      "kota": "pinrang"
+    }, 
+    {
+      "id": "199", 
+      "kota": "pleihari"
+    }, 
+    {
+      "id": "200", 
+      "kota": "polewali"
+    }, 
+    {
+      "id": "201", 
+      "kota": "pondok gede"
+    }, 
+    {
+      "id": "202", 
+      "kota": "ponorogo"
+    }, 
+    {
+      "id": "203", 
+      "kota": "pontianak"
+    }, 
+    {
+      "id": "204", 
+      "kota": "poso"
+    }, 
+    {
+      "id": "205", 
+      "kota": "prabumulih"
+    }, 
+    {
+      "id": "206", 
+      "kota": "praya"
+    }, 
+    {
+      "id": "207", 
+      "kota": "probolinggo"
+    }, 
+    {
+      "id": "208", 
+      "kota": "purbalingga"
+    }, 
+    {
+      "id": "209", 
+      "kota": "purukcahu"
+    }, 
+    {
+      "id": "210", 
+      "kota": "purwakarta"
+    }, 
+    {
+      "id": "211", 
+      "kota": "purwodadigrobogan"
+    }, 
+    {
+      "id": "212", 
+      "kota": "purwokerto"
+    }, 
+    {
+      "id": "213", 
+      "kota": "purworejo"
+    }, 
+    {
+      "id": "214", 
+      "kota": "putussibau"
+    }, 
+    {
+      "id": "215", 
+      "kota": "raha"
+    }, 
+    {
+      "id": "216", 
+      "kota": "rangkasbitung"
+    }, 
+    {
+      "id": "217", 
+      "kota": "rantau"
+    }, 
+    {
+      "id": "218", 
+      "kota": "rantauprapat"
+    }, 
+    {
+      "id": "219", 
+      "kota": "rantepao"
+    }, 
+    {
+      "id": "220", 
+      "kota": "rembang"
+    }, 
+    {
+      "id": "221", 
+      "kota": "rengat"
+    }, 
+    {
+      "id": "222", 
+      "kota": "ruteng"
+    }, 
+    {
+      "id": "223", 
+      "kota": "sabang"
+    }, 
+    {
+      "id": "224", 
+      "kota": "salatiga"
+    }, 
+    {
+      "id": "225", 
+      "kota": "samarinda"
+    }, 
+    {
+      "id": "313", 
+      "kota": "sambas, kalbar"
+    }, 
+    {
+      "id": "226", 
+      "kota": "sampang"
+    }, 
+    {
+      "id": "227", 
+      "kota": "sampit"
+    }, 
+    {
+      "id": "228", 
+      "kota": "sanggau"
+    }, 
+    {
+      "id": "229", 
+      "kota": "sawahlunto"
+    }, 
+    {
+      "id": "230", 
+      "kota": "sekayu"
+    }, 
+    {
+      "id": "231", 
+      "kota": "selong"
+    }, 
+    {
+      "id": "232", 
+      "kota": "semarang"
+    }, 
+    {
+      "id": "233", 
+      "kota": "sengkang"
+    }, 
+    {
+      "id": "234", 
+      "kota": "serang"
+    }, 
+    {
+      "id": "235", 
+      "kota": "serui"
+    }, 
+    {
+      "id": "236", 
+      "kota": "sibolga"
+    }, 
+    {
+      "id": "237", 
+      "kota": "sidikalang"
+    }, 
+    {
+      "id": "238", 
+      "kota": "sidoarjo"
+    }, 
+    {
+      "id": "239", 
+      "kota": "sigli"
+    }, 
+    {
+      "id": "240", 
+      "kota": "singaparna"
+    }, 
+    {
+      "id": "241", 
+      "kota": "singaraja"
+    }, 
+    {
+      "id": "242", 
+      "kota": "singkawang"
+    }, 
+    {
+      "id": "243", 
+      "kota": "sinjai"
+    }, 
+    {
+      "id": "244", 
+      "kota": "sintang"
+    }, 
+    {
+      "id": "245", 
+      "kota": "situbondo"
+    }, 
+    {
+      "id": "246", 
+      "kota": "slawi"
+    }, 
+    {
+      "id": "247", 
+      "kota": "sleman"
+    }, 
+    {
+      "id": "248", 
+      "kota": "soasiu"
+    }, 
+    {
+      "id": "249", 
+      "kota": "soe"
+    }, 
+    {
+      "id": "250", 
+      "kota": "solo"
+    }, 
+    {
+      "id": "251", 
+      "kota": "solok"
+    }, 
+    {
+      "id": "252", 
+      "kota": "soreang"
+    }, 
+    {
+      "id": "253", 
+      "kota": "sorong"
+    }, 
+    {
+      "id": "254", 
+      "kota": "sragen"
+    }, 
+    {
+      "id": "255", 
+      "kota": "stabat"
+    }, 
+    {
+      "id": "256", 
+      "kota": "subang"
+    }, 
+    {
+      "id": "257", 
+      "kota": "sukabumi"
+    }, 
+    {
+      "id": "258", 
+      "kota": "sukoharjo"
+    }, 
+    {
+      "id": "259", 
+      "kota": "sumbawa besar"
+    }, 
+    {
+      "id": "260", 
+      "kota": "sumedang"
+    }, 
+    {
+      "id": "261", 
+      "kota": "sumenep"
+    }, 
+    {
+      "id": "262", 
+      "kota": "sungai liat"
+    }, 
+    {
+      "id": "263", 
+      "kota": "sungai penuh"
+    }, 
+    {
+      "id": "264", 
+      "kota": "sungguminasa"
+    }, 
+    {
+      "id": "265", 
+      "kota": "surabaya"
+    }, 
+    {
+      "id": "266", 
+      "kota": "surakarta"
+    }, 
+    {
+      "id": "267", 
+      "kota": "tabanan"
+    }, 
+    {
+      "id": "268", 
+      "kota": "tahuna"
+    }, 
+    {
+      "id": "269", 
+      "kota": "takalar"
+    }, 
+    {
+      "id": "270", 
+      "kota": "takengon"
+    }, 
+    {
+      "id": "271", 
+      "kota": "tamiang layang"
+    }, 
+    {
+      "id": "272", 
+      "kota": "tanah grogot"
+    }, 
+    {
+      "id": "273", 
+      "kota": "tangerang"
+    }, 
+    {
+      "id": "274", 
+      "kota": "tanjung balai"
+    }, 
+    {
+      "id": "275", 
+      "kota": "tanjung enim"
+    }, 
+    {
+      "id": "276", 
+      "kota": "tanjung pandan"
+    }, 
+    {
+      "id": "277", 
+      "kota": "tanjung pinang"
+    }, 
+    {
+      "id": "278", 
+      "kota": "tanjung redep"
+    }, 
+    {
+      "id": "279", 
+      "kota": "tanjung selor"
+    }, 
+    {
+      "id": "280", 
+      "kota": "tapak tuan"
+    }, 
+    {
+      "id": "281", 
+      "kota": "tarakan"
+    }, 
+    {
+      "id": "282", 
+      "kota": "tarutung"
+    }, 
+    {
+      "id": "283", 
+      "kota": "tasikmalaya"
+    }, 
+    {
+      "id": "284", 
+      "kota": "tebing tinggi"
+    }, 
+    {
+      "id": "285", 
+      "kota": "tegal"
+    }, 
+    {
+      "id": "286", 
+      "kota": "temanggung"
+    }, 
+    {
+      "id": "287", 
+      "kota": "tembilahan"
+    }, 
+    {
+      "id": "288", 
+      "kota": "tenggarong"
+    }, 
+    {
+      "id": "289", 
+      "kota": "ternate"
+    }, 
+    {
+      "id": "290", 
+      "kota": "tolitoli"
+    }, 
+    {
+      "id": "291", 
+      "kota": "tondano"
+    }, 
+    {
+      "id": "292", 
+      "kota": "trenggalek"
+    }, 
+    {
+      "id": "293", 
+      "kota": "tual"
+    }, 
+    {
+      "id": "294", 
+      "kota": "tuban"
+    }, 
+    {
+      "id": "295", 
+      "kota": "tulung agung"
+    }, 
+    {
+      "id": "296", 
+      "kota": "ujung berung"
+    }, 
+    {
+      "id": "297", 
+      "kota": "ungaran"
+    }, 
+    {
+      "id": "298", 
+      "kota": "waikabubak"
+    }, 
+    {
+      "id": "299", 
+      "kota": "waingapu"
+    }, 
+    {
+      "id": "300", 
+      "kota": "wamena"
+    }, 
+    {
+      "id": "301", 
+      "kota": "watampone"
+    }, 
+    {
+      "id": "302", 
+      "kota": "watansoppeng"
+    }, 
+    {
+      "id": "303", 
+      "kota": "wates"
+    }, 
+    {
+      "id": "304", 
+      "kota": "wonogiri"
+    }, 
+    {
+      "id": "305", 
+      "kota": "wonosari"
+    }, 
+    {
+      "id": "306", 
+      "kota": "wonosobo"
+    }, 
+    {
+      "id": "307", 
+      "kota": "yogyakarta"
+    }
+  ], 
+  "success": true
+}
+      </pre>
+      </ol>
+    </div>
+    <div class="container">
+    	<h2>Demo</h2>
+    	<form id="form-demo">
+    		<div class="form-group">
+    			<label for="id_kota">Pilih Kota</label>
+	    		<select id="id_kota" name="id_kota" class="form-control">
+	    			{% for i in city %}
+	    			<option value="{{i.id}}">{{i.kota}}</option>
+	    			{% endfor %}
+	    		</select>
+    		</div>
+    		<div class="form-group">
+    			<label for="mode">Pilih Mode</label>
+	    		<select id="mode" name="mode" class="form-control">
+	    			<option value="daily">Daily</option>
+	    			<option value="monthly">Monthly</option>
+	    		</select>
+    		</div>
+    		<div class="form-group">
+    			<label for="url">URL</label>
+    			<input id="url" type="text" class="form-control" readonly>
+    		</div>
+	    		<div class="container mx-auto">
+	    			<span id="loader" style="display:none;">Proses..</span>
+	    			<div id="result" style="display:none;" class="mx-auto">
+	    				<pre id="demo"></pre>
+	    			</div>
+	    		</div>
+    		<div class="form-group">
+    			<button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">CEK</button>
+    		</div>
+    	</form>
+    </div>
+    
+  </div>
+</body>
+<script>
+	$("#submit").click(function(){
+    var url = "/jadwal"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "GET",
+           url: url,
+           data: $("#form-demo").serialize(), // serializes the form's elements.
+           beforeSend: function(){
+           	$("#loader").show();
+           	$("#result").hide();
+           },
+           success: function(data)
+           {
+           	    $("#loader").hide();
+            	$("#result").show();
+               $("#demo").text(JSON.stringify(data,null,2));
+               $("#url").val(window.location+"jadwal?id_kota="+$("#id_kota").val()+"&mode="+$("#mode").val());
+               $("#submit").focus();// show response from the php script.
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+</html>
